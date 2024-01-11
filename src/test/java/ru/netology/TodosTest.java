@@ -30,7 +30,27 @@ public class TodosTest {
     }
 
     @Test
-    public void searchForTaskOnPositiveCase() {
+    public void searchForTaskOn1PositiveCase() {
+
+        SimpleTask simpleTask = new SimpleTask(1408, "Покушать картошку");
+        Meeting meeting = new Meeting(777, "Сделать домашку", "Тестировщик ПО", "после дождичка в четверг");
+        String[] epicArray = {"Погулять", "Выпить кофе", "Почитать книгу"};
+        Epic epic = new Epic(2605, epicArray);
+
+        Todos todos = new Todos();
+
+        todos.add(simpleTask);
+        todos.add(meeting);
+        todos.add(epic);
+
+        Task[] actual = todos.search("Выпить кофе");
+        Task[] expected = {epic};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchForTaskOn2PositiveCase() {
 
         SimpleTask simpleTask = new SimpleTask(1408, "Сделать домашку");
         Meeting meeting = new Meeting(777, "Сделать домашку", "Тестировщик ПО", "после дождичка в четверг");
